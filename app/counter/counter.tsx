@@ -1,5 +1,5 @@
 
-export default function Counter() {
+export function Counter() {
 
     const handleClick = () => {
         console.log("Click");

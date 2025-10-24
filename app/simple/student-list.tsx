@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
 
 type Student = {
+    id: number
     name: string
     score: number
 }
@@ -14,10 +15,12 @@ export function StudentList() {
 
     const [students, setStudents] = useState<Student[]>([
         {
+            id: 1,
             name: 'Dara',
             score: 65,
         },
         {
+            id: 2,
             name: 'Kong',
             score: 45,
         }
@@ -29,8 +32,25 @@ export function StudentList() {
 
     const onScoreChange = (student: Student)=> {
         console.info('Student score changed: ', student)
-
+        /*setTimeout(() => {
+            setStudents(students.map(s => {
+                if (s.id === student.id) {
+                    return student
+                }
+                return s
+            }))
+        }, 0)*/
+        /*setStudents(students.map(s => {
+            if (s.id === student.id) {
+                return student
+            }
+            return s
+        }))*/
     }
+
+    useEffect(() => {
+        console.info("Updated students:", students);
+    }, [students]);
 
 
     return (
@@ -130,7 +150,7 @@ const StudentRowMemo = React.memo<StudentRowProp>((props: {
     const result = useMemo(() => rowValue.score >= 50 ? Result.Passed : Result.Failed, [rowValue])
 
     const handleScoreChange = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        onScoreChange({ ...student, score: event.target.value })
+        onScoreChange({ ...student, score: parseFloat(event.target.value) })
         setRowValue({ ...student, score: parseFloat(event.target.value) })
     }, [student])
 

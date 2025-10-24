@@ -1,4 +1,5 @@
 import {useState, useEffect, useEffectEvent, useMemo} from 'react'
+import {StudentList} from "~/simple/student-list";
 
 export function Simple() {
     const [name, setName] = useState('')
@@ -34,6 +35,9 @@ export function Simple() {
                     onChange={e => setValue(e.target.value)}
                 />
                 <p className="text-2xl">{amount}</p>
+            </div>
+            <div className="w-1/2 min-w-[200px] p-5">
+                <StudentList />
             </div>
         </div>
     )

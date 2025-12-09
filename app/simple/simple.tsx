@@ -34,10 +34,14 @@ export function Simple() {
                     type="number"
                     onChange={e => setValue(e.target.value)}
                 />
-                <p className="text-2xl">{amount}</p>
+                <div className="w-1/2 min-w-[200px] p-5">
+                    { amount && <p className="text-2xl">{amount}</p> }
+                </div>
             </div>
             <div className="w-1/2 min-w-[200px] p-5">
                 <StudentList />
+            </div>
+            <div className="w-1/2 min-w-[200px] p-5">
             </div>
         </div>
     )

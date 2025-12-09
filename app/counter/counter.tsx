@@ -1,5 +1,6 @@
 import {Activity, useMemo, useState} from 'react'
 import {Welcome} from "~/welcome/welcome";
+import {createBankAccount, createCounter, outer} from "~/helpers/closure";
 
 export function Counter() {
     const [count, setCount] = useState(0)
@@ -9,6 +10,18 @@ export function Counter() {
         setCount(count + 1)
         //setCount((count) => count + 1)
     }
+
+    const fnCounter = outer()
+    console.log(fnCounter())
+    console.log(fnCounter())
+
+    const acc = createBankAccount()
+    acc.deposit(10000)
+    console.log(acc.getBalance())
+    acc.deposit(5000)
+    console.log(acc.getBalance())
+    acc.withdraw(2000)
+    console.log(acc.getBalance())
 
     const isVisible = useMemo(() => count > 5, [count])
 

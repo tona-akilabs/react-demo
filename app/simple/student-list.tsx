@@ -78,7 +78,7 @@ export function StudentList() {
                 </thead>
                 <tbody>
                 {
-                    students.map((student: Student) => <StudentRowMemo student={student} onScoreChange={onScoreChange} />)
+                    students.map((student: Student, index) => <StudentRowMemo key={index} student={student} onScoreChange={onScoreChange} />)
                 }
                 </tbody>
             </table>
